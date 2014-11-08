@@ -71,6 +71,7 @@ namespace SubversionPwd
                 string entropy = null;
                 string description="";
                 string decrypted="";
+                string error = null;
 
                 try
                 {
@@ -80,20 +81,20 @@ namespace SubversionPwd
                 {
                     if (ex != null)
                     {
-                        description = ex.GetBaseException().Message;
+                        error = ex.GetBaseException().Message;
                     }
                 }
 
-                String txt = "url=" + url + line;
-                txt += "user=" + user + line;
+                String txt = "url = " + url + line;
+                txt += "user = " + user + line;
 
-                if (description != null)
+                if (error != null)
                 {
-                    txt += "error=" + description + line;
+                    txt += "error = " + error + line;
                 }
                 else
                 {
-                    txt += "pwd=" + decrypted + line;
+                    txt += "pwd = " + decrypted + line;
                 }
                                 
                 textBox1.Text += txt+line;
